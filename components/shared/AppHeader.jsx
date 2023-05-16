@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { FiSun, FiMoon, FiX, FiMenu } from 'react-icons/fi';
+import { BsPerson } from 'react-icons/bs'
 import HireMeModal from '../HireMeModal';
 import logoLight from '../../public/images/logo-light.svg';
 import logoDark from '../../public/images/logo-dark.svg';
@@ -136,6 +137,14 @@ function AppHeader() {
 							Hire Me
 						</button>
 					</div>
+					<div className='border-t-2 pt-3 sm:pt-0 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
+						<button
+							className=" font-general-medium sm:hidden block text-left text-md bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-sm px-4 py-2 mt-2 duration-300 w-24 "
+							aria-label="Login"
+						>
+							<Link href="/login">Login</Link>
+						</button>
+					</div>
 				</div>
 
 				{/* Header links large screen */}
@@ -172,7 +181,18 @@ function AppHeader() {
 							Hire Me
 						</button>
 					</div>
-
+					{/* Login */}
+					<div className="hidden md:flex ml-8 ">
+						<div className='pl-4 pr-4 shadow-sm rounded-md px-1 py-2.5 duration-300 inline-flex bg-indigo-500 hover:bg-indigo-600 text-white'>
+						<BsPerson className=' w-6 h-6'/>
+						<button
+							className=" text-md font-general-medium "
+							aria-label="Login"
+						>
+							<Link href="/login">Login</Link>
+						</button>
+						</div>
+					</div>
 					{/* Theme switcher large screen */}
 					<div
 						onClick={() => setTheme(activeTheme)}
