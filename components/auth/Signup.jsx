@@ -13,12 +13,12 @@ function Signup() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center font-general-medium">
+    <div className="flex flex-col items-center justify-center font-general-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light ">
       <h1 className="text-3xl font-bold mb-8">Create an account</h1>
       <form onSubmit={handleSubmit} className="w-full max-w-sm">
         
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
+          <label className="block text-gray-700 font-bold mb-2 dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light" htmlFor="email">
             Email
           </label>
           <input
@@ -31,7 +31,7 @@ function Signup() {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="password">
+          <label className="block text-gray-700 font-bold mb-2 dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light" htmlFor="password">
             Password
           </label>
           <input
@@ -43,7 +43,7 @@ function Signup() {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="repassword">
+          <label className="block text-gray-700 font-bold mb-2 dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light" htmlFor="repassword">
             Repeat password
           </label>
           <input
