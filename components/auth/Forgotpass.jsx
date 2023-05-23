@@ -11,12 +11,12 @@ function Login() {
   }
 
   return (
-    <div className="flex flex-col items-center justify-center font-general-medium max-w-sm mx-auto">
+    <div className="flex flex-col items-center justify-center font-general-medium max-w-sm mx-auto text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light ">
       <h1 className="text-3xl font-bold mb-8">Forgot your password?</h1>
       <p className='text-center text-sm mb-8'>If you can not remember your password, fill in your email below. An email will be sent to you that you can use to reset your password.</p>
       <form onSubmit={handleSubmit} className="w-full max-w-sm">
         <div className="mb-4">
-          <label className="block text-gray-700 font-bold mb-2" htmlFor="email">
+          <label className="block text-gray-700 font-bold mb-2 dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light" htmlFor="email">
             Email
           </label>
           <input
