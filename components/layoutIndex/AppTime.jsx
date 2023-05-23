@@ -2,7 +2,7 @@ import React from "react";
 
 function AppTime() {
   return (
-    <div className="py-12 border-t-2 border-b-2 bg-transparent text-black dark:text-white">
+    <div className="py-12 border-t-2 border-b-2 bg-transparent text-black dark:text-white mt-3">
       <div className="mx-auto text-center">
         <div className="text-3xl mb-8 text-left leading-none">
           In the last 30 days
