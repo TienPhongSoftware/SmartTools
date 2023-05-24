@@ -181,13 +181,13 @@ function AppHeader() {
             </Link>
           </div>
           <div className="border-t-2 pt-3 sm:pt-0 sm:border-t-0 border-primary-light dark:border-secondary-dark flex justify-center items-center">
-            <button
-              onClick={showHireMeModal}
+            <Link
+              href={"/login"}
               className="font-general-medium sm:hidden block md:text-left text-md bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-md px-4 py-2 mt-2 duration-300 w-24 sm:text-center sm:w-full"
               aria-label="Hire Me Button"
             >
               Login
-            </button>
+            </Link>
           </div>
         </div>
 
@@ -255,8 +255,8 @@ function AppHeader() {
         {/* Header right section buttons */}
         <div className="hidden sm:flex justify-between items-center flex-col md:flex-row">
           <div className="hidden md:flex">
-            <button
-              onClick={showHireMeModal}
+            <Link
+              href={"/login"}
               className="text-md font-general-medium bg-indigo-500 hover:bg-indigo-600 text-white 
 			  shadow-sm rounded-md px-5 py-2.5 duration-300 flex justify-center items-center"
               aria-label="Hire Me Button"
@@ -273,7 +273,7 @@ function AppHeader() {
                 <path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path>
               </svg>
               Login
-            </button>
+            </Link>
           </div>
 
           {/* Theme switcher large screen */}
