@@ -8,14 +8,14 @@ import HireMeModal from '../HireMeModal';
 import logoLight from '../../public/images/logo-light.svg';
 import logoDark from '../../public/images/logo-dark.svg';
 import useThemeSwitcher from '../../hooks/useThemeSwitcher';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 
 function AppHeader() {
 	const [showMenu, setShowMenu] = useState(false);
 	const [showModal, setShowModal] = useState(false);
 	const [activeTheme, setTheme] = useThemeSwitcher();
-	const { data } = useSession()
-	console.log(data)
+	const { data: session } = useSession()
+	// console.log(data: session)
 
 	function toggleMenu() {
 		if (!showMenu) {
@@ -141,12 +141,23 @@ function AppHeader() {
 						</button>
 					</div>
 					<div className='border-t-2 pt-3 sm:pt-0 sm:border-t-0 border-primary-light dark:border-secondary-dark'>
-						{data !== undefined ? data.user.email : <button
+						{session ? (
+							<div className="pl-4 pr-4 shadow-sm rounded-md px-1 py-2.5 duration-300 inline-flex bg-indigo-500 hover:bg-indigo-600 text-white">
+								<div>{session.user.email}</div>
+									<button
+										onClick={() => signOut()} // Add signout functionality
+										className="text-md font-general-medium ml-2"
+										aria-label="Sign Out"
+									>
+										Sign Out
+									</button>
+							</div>
+						) : (<button
 							className=" font-general-medium sm:hidden block text-left text-md bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-sm px-4 py-2 mt-2 duration-300 w-24 "
 							aria-label="Login"
 						>
 							<Link href="/login">Login</Link>
-						</button>}
+						</button>)}
 					</div>
 				</div>
 
@@ -187,14 +198,25 @@ function AppHeader() {
 					{/* Login */}
 					<div className="hidden md:flex ml-8 ">
 						<div className='pl-4 pr-4 shadow-sm rounded-md px-1 py-2.5 duration-300 inline-flex bg-indigo-500 hover:bg-indigo-600 text-white'>
-						{data ? <>{data.user.email}</> : <>
+						{session ? (
+							<div>
+								<div className="inline-flex">{session.user.email}</div>
+									<button
+										onClick={() => signOut()} // Add signout functionality
+										className="text-md font-general-medium ml-2"
+										aria-label="Sign Out"
+									>
+										Sign Out
+									</button>
+							</div>
+						) : (<>
 						<BsPerson className=' w-6 h-6'/>
 						<button
 							className=" text-md font-general-medium "
 							aria-label="Login"
 						>
 							<Link href="/login">Login</Link>
-						</button></>}
+						</button></>)}
 						</div>
 					</div>
 					{/* Theme switcher large screen */}
