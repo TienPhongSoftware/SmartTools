@@ -22,10 +22,10 @@ const ProjectSingle = (props) => {
         passHref
       >
         <div className="rounded-xl shadow-lg hover:shadow-xl cursor-pointer mb-10 sm:mb-0 bg-secondary-light dark:bg-ternary-dark">
-          <div>
+          <div className="text-center">
             <Image
               src={props.img}
-              className="rounded-t-xl border-none inline-block w-full"
+              className="rounded-t-xl border-none inline-block w-[50%]"
               alt="Single Project"
               width={300}
               height={90}
