@@ -8,9 +8,35 @@ function Signup() {
   const [password, setPassword] = useState('')
   const [repassword, setRepassword] = useState('')
   const handleSubmit = (e) => {
-    e.preventDefault()
-    // Call your signup API here
-  }
+    e.preventDefault();
+    // Construct the request body
+    const data = {
+      username: email,
+      email: email,
+      firstname: email,
+      lastname: email,
+      password: password,
+      confirmpassword: repassword,
+    };
+    // Make the API request
+    fetch('http://localhost:5010/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the API
+        console.log(data);
+        // Add your logic to handle the response here
+      })
+      .catch((error) => {
+        // Handle any errors that occur during the request
+        console.error('Error:', error);
+      });
+  };
 
   return (
     <div className="flex flex-col items-center justify-center font-general-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light ">

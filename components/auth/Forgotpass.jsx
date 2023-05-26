@@ -7,8 +7,29 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Call your login API here
-  }
+    // Construct the request body
+    const data = {
+      email: email,
+    };
+    // Make the API request
+    fetch('http://localhost:5010/api/users/forgetpassword', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        // Handle the response from the API
+        console.log(data);
+        // Add your logic to handle the response here
+      })
+      .catch((error) => {
+        // Handle any errors that occur during the request
+        console.error('Error:', error);
+      });
+  };
 
   return (
     <div className="flex flex-col items-center justify-center font-general-medium max-w-sm mx-auto text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light ">

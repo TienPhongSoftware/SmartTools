@@ -1,14 +1,41 @@
 import { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import { redirect } from 'next/dist/server/api-utils';
 
 function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
+  const router = useRouter();
   const handleSubmit = (e) => {
     e.preventDefault()
-    // Call your login API here
-  }
+    // Construct the request body
+    const data = {
+      username: email,
+      password: password,
+    };
+    // Make the API request
+    fetch('http://localhost:5010/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if(data.statusCode === 200){
+          router.push('/');
+        }
+        // Handle the response from the API
+        console.log(data);
+        // Add your logic to handle the response here
+      })
+      .catch((error) => {
+        // Handle any errors that occur during the request
+        console.error('Error:', error);
+      });
+  };
 
   return (
     <div className="flex flex-col items-center justify-center font-general-medium text-primary-dark dark:text-ternary-light hover:text-secondary-dark dark:hover:text-secondary-light ">
