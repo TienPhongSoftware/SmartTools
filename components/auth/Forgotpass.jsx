@@ -12,7 +12,7 @@ function Login() {
       email: email,
     };
     // Make the API request
-    fetch('http://localhost:5010/api/users/forgetpassword', {
+    fetch('https://loginapitp.herokuapp.com/api/users/forgetpassword', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

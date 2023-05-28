@@ -19,7 +19,7 @@ function Signup() {
       confirmpassword: repassword,
     };
     // Make the API request
-    fetch('http://localhost:5010/api/auth/register', {
+    fetch('https://loginapitp.herokuapp.com/api/auth/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

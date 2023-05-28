@@ -15,7 +15,7 @@ function Login() {
       password: password,
     };
     // Make the API request
-    fetch('http://localhost:5010/api/auth/login', {
+    fetch('https://loginapitp.herokuapp.com/api/auth/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
