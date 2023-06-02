@@ -31,7 +31,7 @@ function AppAllTools() {
                 <p className="text-sm leading-5 font-semibold tracking-wide text-gray-500 dark:text-white uppercase mb-2">
                   Converters
                 </p>
-                <ul className="sm:space-y-2">
+                {/* <ul className="sm:space-y-2">
                   <li>
                     <a
                       href=""
@@ -147,7 +147,7 @@ function AppAllTools() {
                       <span>Convert to Srt</span>
                     </a>
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>
@@ -180,7 +180,7 @@ function AppAllTools() {
                 <p className="text-sm leading-5 font-semibold tracking-wide text-gray-500 dark:text-white uppercase mb-2">
                   SYNCING
                 </p>
-                <ul className="sm:space-y-2">
+                {/* <ul className="sm:space-y-2">
                   <li>
                     <a
                       href=""
@@ -296,7 +296,7 @@ function AppAllTools() {
                       <span>Convert to Srt</span>
                     </a>
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>
@@ -329,7 +329,7 @@ function AppAllTools() {
                 <p className="text-sm leading-5 font-semibold tracking-wide text-gray-500 dark:text-white uppercase mb-2">
                   FIXING
                 </p>
-                <ul className="sm:space-y-2">
+                {/* <ul className="sm:space-y-2">
                   <li>
                     <a
                       href=""
@@ -445,7 +445,7 @@ function AppAllTools() {
                       <span>Convert to Srt</span>
                     </a>
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>
@@ -478,7 +478,7 @@ function AppAllTools() {
                 <p className="text-sm leading-5 font-semibold tracking-wide text-gray-500 dark:text-white uppercase mb-2">
                   OTHER
                 </p>
-                <ul className="sm:space-y-2">
+                {/* <ul className="sm:space-y-2">
                   <li>
                     <a
                       href=""
@@ -594,7 +594,7 @@ function AppAllTools() {
                       <span>Convert to Srt</span>
                     </a>
                   </li>
-                </ul>
+                </ul> */}
               </div>
             </div>
           </div>
