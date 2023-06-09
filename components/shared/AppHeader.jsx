@@ -6,12 +6,15 @@ import { FiSun, FiMoon, FiX, FiMenu } from "react-icons/fi";
 import HireMeModal from "../HireMeModal";
 import useThemeSwitcher from "../../hooks/useThemeSwitcher";
 import AppAllTools from "./AppAllTools";
+import { signOut, useSession } from 'next-auth/react';
 
 function AppHeader() {
   const [showMenu, setShowMenu] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [activeTheme, setTheme] = useThemeSwitcher();
+  const { data: session } = useSession();
 
+  console.log( {data: session})
   /* AllTools */
   const [isHovered, setIsHovered] = useState(false);
 
@@ -181,13 +184,25 @@ function AppHeader() {
             </Link>
           </div>
           <div className="border-t-2 pt-3 sm:pt-0 sm:border-t-0 border-primary-light dark:border-secondary-dark flex justify-center items-center">
+            {session ? (
+							<div className="pl-4 pr-4 shadow-sm rounded-md px-1 py-2.5 duration-300 inline-flex bg-indigo-500 hover:bg-indigo-600 text-white">
+								<div>{session.user.email}</div>
+									<button
+										onClick={() => signOut()} // Add signout functionality
+										className="text-md font-general-medium ml-2"
+										aria-label="Sign Out"
+									>
+										Sign Out
+									</button>
+							</div>
+						) : (
             <Link
               href={"/login"}
               className="font-general-medium sm:hidden block md:text-left text-md bg-indigo-500 hover:bg-indigo-600 text-white shadow-sm rounded-md px-4 py-2 mt-2 duration-300 w-24 sm:text-center sm:w-full"
               aria-label="Hire Me Button"
             >
               Login
-            </Link>
+            </Link>)}
           </div>
         </div>
 
@@ -255,11 +270,24 @@ function AppHeader() {
         {/* Header right section buttons */}
         <div className="hidden sm:flex justify-between items-center flex-col md:flex-row">
           <div className="hidden md:flex">
+            <div className='pl-4 pr-4 shadow-sm rounded-md px-1 py-2.5 duration-300 inline-flex bg-indigo-500 hover:bg-indigo-600 text-white'>
+            {session ? (
+							<div>
+								<div className="inline-flex">{session.user.email}</div>
+									<button
+										onClick={() => signOut()} // Add signout functionality
+										className="text-md font-general-medium ml-2"
+										aria-label="Sign Out"
+									>
+										Sign Out
+									</button>
+							</div>
+						) : (
+            
             <Link
-              href={"/login"}
-              className="text-md font-general-medium bg-indigo-500 hover:bg-indigo-600 text-white 
-			  shadow-sm rounded-md px-5 py-2.5 duration-300 flex justify-center items-center"
-              aria-label="Hire Me Button"
+              href="/login"
+              className="text-md font-general-medium px-5 flex justify-center items-center"
+              aria-label="login"
             >
               <svg
                 className="hidden sm:block w-5 h-5 mr-1"
@@ -274,6 +302,8 @@ function AppHeader() {
               </svg>
               Login
             </Link>
+            )}
+            </div>
           </div>
 
           {/* Theme switcher large screen */}

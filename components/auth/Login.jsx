@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { redirect } from 'next/dist/server/api-utils';
+
 
 function Login() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const router = useRouter();
+  const [errors, setErrors] = useState([]);
+
   const handleSubmit = (e) => {
     e.preventDefault()
     // Construct the request body
@@ -25,10 +27,13 @@ function Login() {
       .then((response) => response.json())
       .then((data) => {
         if(data.statusCode === 200){
-          router.push('/');
+          return data.message;
         }
         // Handle the response from the API
-        console.log(data);
+        if(data.statusCode === 400) {
+          setErrors(data.errors)
+        }
+        console.log ('data ' + JSON.stringify(data));
         // Add your logic to handle the response here
       })
       .catch((error) => {
@@ -64,6 +69,15 @@ function Login() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+        </div>
+        <div className='bg-red-50 mb-5'>
+          {errors.length > 0 && (
+            <ul>
+              {errors.map((error, index) => (
+                <li className='text-red-600' key={index}>{error}</li>
+              ))}
+            </ul>
+          )}
         </div>
         <div className="flex items-center justify-between">
           <Link href="/forgotpass" passHref>

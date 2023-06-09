@@ -7,6 +7,8 @@ function Signup() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [repassword, setRepassword] = useState('')
+  const [errors, setErrors] = useState([]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
     // Construct the request body
@@ -29,12 +31,19 @@ function Signup() {
       .then((response) => response.json())
       .then((data) => {
         // Handle the response from the API
-        console.log(data);
+        if(data.statusCode === 200){
+          router.push('/');
+        }
+        console.log ('data ' + JSON.stringify(data));
+        if(data.statusCode === 400) {
+          setErrors(data.errors)
+        }
         // Add your logic to handle the response here
       })
       .catch((error) => {
         // Handle any errors that occur during the request
         console.error('Error:', error);
+        
       });
   };
 
@@ -80,11 +89,20 @@ function Signup() {
             onChange={(e) => setRepassword(e.target.value)}
           />
         </div>
+        <div className='bg-red-50 mb-5'>
+          {errors.length > 0 && (
+            <ul>
+              {errors.map((error, index) => (
+                <li className='text-red-600' key={index}>{error}</li>
+              ))}
+            </ul>
+          )}
+        </div>
         <div className="flex items-center justify-between">
           <button
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
-          >
+            >
             Sign up
           </button>
         </div>
