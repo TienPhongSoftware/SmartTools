@@ -32,12 +32,12 @@ function Signup() {
       .then((data) => {
         // Handle the response from the API
         if(data.statusCode === 200){
-          router.push('/');
+          return data.message;
         }
-        console.log ('data ' + JSON.stringify(data));
         if(data.statusCode === 400) {
           setErrors(data.errors)
         }
+        console.log ('data ' + JSON.stringify(data));
         // Add your logic to handle the response here
       })
       .catch((error) => {
