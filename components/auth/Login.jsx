@@ -26,9 +26,7 @@ function Login() {
     })
       .then((response) => response.json())
       .then((data) => {
-        if(data.statusCode === 200){
-          return data.message;
-        }
+        
         // Handle the response from the API
         if(data.statusCode === 400) {
           setErrors(data.errors)
