@@ -8,6 +8,7 @@ function Signup() {
   const [password, setPassword] = useState('')
   const [repassword, setRepassword] = useState('')
   const [errors, setErrors] = useState([]);
+  const [successMessage, setSuccessMessage] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -32,7 +33,7 @@ function Signup() {
       .then((data) => {
         // Handle the response from the API
         if(data.statusCode === 200){
-          return data.message;
+          setSuccessMessage(data.message);
         }
         if(data.statusCode === 400) {
           setErrors(data.errors)
@@ -88,6 +89,11 @@ function Signup() {
             value={repassword}
             onChange={(e) => setRepassword(e.target.value)}
           />
+        </div>
+        <div className='bg-green-50'>
+          {successMessage && (
+          <p className="text-green-600">{successMessage}</p>
+          )}
         </div>
         <div className='bg-red-50 mb-5'>
           {errors.length > 0 && (
