@@ -8,13 +8,6 @@ function Signup() {
   const [password, setPassword] = useState('')
   const [repassword, setRepassword] = useState('')
   const [errors, setErrors] = useState([]);
-  //const express = require('express');
-  //const cors = require('cors');
-
-  //const app = express();
-
-// Enable CORS middleware
-//app.use(cors());
 
   const handleSubmit = (e) => {
     e.preventDefault();
